@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users | LibraReads</title>
+    <link rel="stylesheet" href="adminusers.css">
+    <script defer src="adminusers.js"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">LibraReads</div>
+        <ul>
+            <li><a href="admin.html"><i class="bx bx-grid-alt"></i> Dashboard</a></li>
+            <li><a href="adminbooks.html"><i class="bx bx-book"></i> Books</a></li>
+            <li class="active"><a href="adminusers.html"><i class="bx bx-user"></i> Users</a></li>
+            <li><a href="adminreports.html"><i class="bx bx-bar-chart-alt-2"></i> Reports</a></li>
+            <li><a href="adminsettings"><i class="bx bx-cog"></i> Settings</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header>
+            <h2>Users Management</h2>
+            <button class="add-user-btn">+ Add User</button>
+        </header>
+
+        <section class="users-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Profile</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersList">
+                    <!-- Data akan dimasukkan dengan JS -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>

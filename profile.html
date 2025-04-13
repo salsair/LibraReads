@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - LibraReads</title>
+    <link rel="stylesheet" href="profile.css">
+    <script defer src="profile.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+    <div class="back-button">
+        <a href="dashboard.html">
+            <i class='bx bx-arrow-back'></i>
+        </a>
+    </div>
+    <h2 class="logo">LIBRAREADS</h2>
+</div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3 id="sidebar-name">LibraReader</h3>
+            <div class="sidebar-profile-pic">
+                <img id="sidebar-picture" src="images/dashboard/profile.png" alt="Profile Picture">
+                <label for="sidebar-upload" class="custom-upload">
+                    <i class='bx bx-camera'></i> Change Photo
+                </label>
+                <input type="file" id="sidebar-upload" accept="image/*">
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <h3>PROFILE</h3>
+            <hr>
+            <form id="profile-form">
+                <label>Username</label>
+                <input type="text" id="username" value="Libro">
+
+                <label>Email</label>
+                <input type="email" id="email" value="LibraReader@example.com">
+
+                <label>Phone Number</label>
+                <input type="text" id="phone" value="+6281234567">
+
+                <button type="submit" class="save-btn">Save Changes</button>
+                <button type="button" class="logout-btn" onclick="logout()">Logout</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

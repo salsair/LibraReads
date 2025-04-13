@@ -1,0 +1,233 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: #121921;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 100px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #a28d4f;
+}
+
+.btn {
+    background: #a28d4f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #8c773d;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8%;
+    padding-left: 10%;
+    background: linear-gradient(to right, #121921, #1d3046);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    height: 100vh;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn.primary {
+    background: #a28d4f;
+}
+
+.btn.secondary {
+    background: #555;
+}
+
+.hero-image img {
+    width: 500px;
+}
+
+/* Learning Invitation */
+.invitation {
+    text-align: center;
+    padding: 80px 10%;
+    background: white;
+}
+
+.invitation h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category {
+    background: #a28d4f;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.category:hover {
+    background: #8c773d;
+    transform: scale(1.1);
+}
+
+/* Mobile App Section */
+.mobile-app {
+    text-align: center;
+    padding: 80px 10%;
+    background: #f0f0f0;
+}
+
+.mobile-app h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.mobile-app p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.app-features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.app-feature {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.app-feature:hover {
+    transform: scale(1.05);
+}
+
+.app-feature i {
+    font-size: 50px;
+    color: #a28d4f;
+    margin-bottom: 15px;
+}
+
+.app-feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.download-buttons {
+    margin-top: 20px;
+}
+
+.download-buttons img {
+    width: 50px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.download-buttons img:hover {
+    transform: scale(1.1);
+}
+
+/* About & Contact Section */
+.about, .contact {
+    text-align: center;
+    padding: 80px 10%;
+    background: #f8f9fa;
+}
+
+.about p, .contact p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #121921;
+    color: white;
+}
+
+

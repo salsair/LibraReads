@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | LibraReads</title>
+    <link rel="stylesheet" href="adminreports.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="adminreports.js"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">LibraReads</div>
+        <ul>
+            <li><a href="admin.html"><i class="bx bx-grid-alt"></i> Dashboard</a></li>
+            <li><a href="adminbooks.html"><i class="bx bx-book"></i> Books</a></li>
+            <li><a href="adminusers.html"><i class="bx bx-user"></i> Users</a></li>
+            <li class="active"><i class="bx bx-bar-chart-alt-2"></i> Reports</li>
+            <li><a href="adminsettings.html"><i class="bx bx-cog"></i> Settings</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header>
+            <h2>Reports Overview</h2>
+        </header>
+
+        <!-- Report Charts -->
+        <section class="charts">
+            <div class="chart">
+                <h3>User Growth</h3>
+                <canvas id="userGrowthChart"></canvas>
+            </div>
+            <div class="chart">
+                <h3>Book Categories</h3>
+                <canvas id="bookCategoryChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Report Table -->
+        <section class="report-table">
+            <h3>Recent Activities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-03-25</td>
+                        <td>Pavita</td>
+                        <td>Borrowed</td>
+                        <td>Think Python</td>
+                    </tr>
+                    <tr>
+                        <td>2025-03-24</td>
+                        <td>Vina</td>
+                        <td>Returned</td>
+                        <td>Machine Learning</td>
+                    </tr>
+                    <tr>
+                        <td>2025-03-23</td>
+                        <td>Jovana</td>
+                        <td>Added</td>
+                        <td>Web Development</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>

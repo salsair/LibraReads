@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LibraReads</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script defer src="dashboard.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="landingpage.html"><img src="images/LogoLibraReads.png" alt="LibraReads Logo"></a>
+            </div>
+            <ul>
+                <li><a href="dashboard.html"><i class='bx bxs-home'></i> Home</a></li>
+                <li><a href="homepage.html"><i class='bx bxs-book'></i> Books</a></li>
+                <li><a href="#" id="categoriesBtn"><i class='bx bxs-category'></i> Categories</a></li>
+                <li><a href="profile.html"><i class='bx bxs-user'></i> Profile</a></li>
+                <li><a href="login.html"><i class='bx bxs-log-out'></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Header -->
+            <header class="top-nav">
+                <input type="text" class="search-bar" placeholder="Search for books...">
+                <div class="user-profile">
+                    <a href="profile.html"><img src="images/profileb.png" alt="User Profile"></a>
+                    <span>Hi, Bro!</span>
+                </div>
+            </header>
+
+            <!-- Content Section -->
+            <main class="content">
+                <h1>Welcome to LibraReads</h1>
+                <p>Explore our best book recommendations for you.</p>
+
+                <section class="book-section">
+                    <h2>Most Popular</h2>
+                    <div class="book-list">
+                        <div class="book">
+                            <img src="images/PythonDataAnalysis.jpg" alt="Python Data Analysis">
+                            <p>Python Data Analysis</p>
+                        </div>
+                        <div class="book">
+                            <img src="images/PhpByExample.jpg" alt="PHP by Example">
+                            <p>PHP by Example</p>
+                        </div>
+                        <div class="book">
+                            <img src="images/DataScience101.jpg" alt="Data Science 101">
+                            <p>Data Science 101</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="categories">
+                    <h2>Popular Categories</h2>
+                    <div class="category-list">
+                        <div class="category">Python</div>
+                        <div class="category">JavaScript</div>
+                        <div class="category">Machine Learning</div>
+                        <div class="category">Data Science</div>
+                        <div class="category">Web Development</div>
+                        <div class="category">Mobile Apps</div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Drawer Categories -->
+        <div class="category-drawer" id="categoryDrawer">
+            <div class="category-header">
+                <h2>Programming Languages</h2>
+                <button id="closeDrawer" class="close-btn">&times;</button>
+            </div>
+            <div class="category-list">
+                <div class="category">HTML</div>
+                <div class="category">CSS</div>
+                <div class="category">JavaScript</div>
+                <div class="category">Python</div>
+                <div class="category">Java</div>
+                <div class="category">SQL</div>
+                <div class="category">R</div>
+                <div class="category">C</div>
+                <div class="category">C++</div>
+                <div class="category">Nodejs</div>
+                <div class="category">Dart</div>
+                <div class="category">PHP</div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
