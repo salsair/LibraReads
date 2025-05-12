@@ -1,0 +1,268 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #121921;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Top Navigation Bar */
+.sidebar {
+    width: 100%;
+    background-color: #121921;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .logo img {
+    width: 100px;
+    height: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.sidebar ul li {
+    width: auto;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.sidebar ul li a:hover {
+    background: #a28d4f;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Search Bar */
+.top-nav {
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* Menjadikan elemen sticky */
+    top: 70px; /* Memberikan jarak agar tidak tertutup sidebar */
+    z-index: 1000; /* Pastikan sticky berada di atas konten lainnya */
+}
+
+.search-bar {
+    width: 60%;
+    max-width: 600px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-bar:focus {
+    border-color: #a28d4f;
+    box-shadow: 0 0 5px rgba(162, 141, 79, 0.5);
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: 20px 40px;
+}
+
+/* Book Sections */
+.book-section {
+    margin-bottom: 40px;
+}
+
+.book-section h2 {
+    font-size: 24px;
+    color: #121921;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #a28d4f;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.book {
+    width: 150px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+}
+
+.book img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Categories Sidebar */
+.categories-sidebar {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #121921;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.categories-sidebar.open {
+    left: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.sidebar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #a28d4f;
+}
+
+.categories-sidebar h3 {
+    margin: 20px 0 15px;
+    font-size: 18px;
+    color: #a28d4f;
+}
+
+.categories-sidebar ul {
+    list-style: none;
+}
+
+.categories-sidebar ul li {
+    padding: 10px 0;
+    cursor: pointer;
+    transition: color 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.categories-sidebar ul li:hover {
+    color: #a28d4f;
+}
+
+.categories-sidebar ul li.see-all {
+    color: #a28d4f;
+    font-weight: bold;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar ul {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .search-bar {
+        width: 80%;
+    }
+    
+    .book {
+        width: calc(33.33% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .book {
+        width: calc(50% - 10px);
+    }
+    
+    .content {
+        padding: 15px;
+    }
+}

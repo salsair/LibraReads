@@ -9,13 +9,25 @@ document.getElementById("send-code-btn").addEventListener("click", function () {
         return;
     }
 
-    // Simulasi pengiriman kode OTP
-    generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
-    alert("Verification code sent to " + email + ". Your OTP: " + generatedOTP); 
-
-    // Sembunyikan form email dan tampilkan form OTP
-    document.getElementById("email-form").style.display = "none";
-    document.getElementById("otp-form").style.display = "block";
+    // Kirim permintaan POST untuk mengirim OTP ke email
+    fetch('process_forgotpassword.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email=' + encodeURIComponent(email)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message);  // Memberi tahu pengguna bahwa OTP telah dikirim
+            document.getElementById("email-form").style.display = "none";
+            document.getElementById("otp-form").style.display = "block"; // Menampilkan form OTP
+        } else {
+            alert(data.message);  // Jika gagal, tampilkan pesan kesalahan
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
 
 // Ketika OTP dikirim dan user mencoba verifikasi
@@ -23,18 +35,29 @@ document.getElementById("otp-form").addEventListener("submit", function (event) 
     event.preventDefault(); // Mencegah submit default form
 
     let enteredOTP = document.getElementById("otp").value;
-    if (enteredOTP !== generatedOTP) {
-        alert("Incorrect OTP! Please try again.");
-        return;
-    }
-
-    // Jika OTP benar, tampilkan form reset password
-    alert("OTP Verified! You can now reset your password.");
-    document.getElementById("otp-form").style.display = "none";
-    document.getElementById("password-form").style.display = "block";
+    
+    // Memverifikasi OTP
+    fetch('process_forgotpassword.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'otp=' + encodeURIComponent(enteredOTP)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert("OTP Verified! You can now reset your password.");
+            document.getElementById("otp-form").style.display = "none";
+            document.getElementById("password-form").style.display = "block"; // Menampilkan form password
+        } else {
+            alert("Incorrect OTP! Please try again.");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
 
-// Ketika user mengisi password baru
+// Reset Password
 document.getElementById("password-form").addEventListener("submit", function (event) {
     event.preventDefault();
 

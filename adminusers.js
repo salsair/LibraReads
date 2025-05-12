@@ -1,11 +1,11 @@
 // Dummy user data
 const users = [
-    { id: 1, profile: "images/dashboard/jo.png", name: "Jovana Semarang", email: "jopintul@email.com", role: "Admin" },
-    { id: 2, profile: "images/dashboard/vita.jpg", name: "Vita Surabaya", email: "puff@email.com", role: "Editor" },
-    { id: 3, profile: "images/dashboard/vina.png", name: "Vina Magetan", email: "vunk@email.com", role: "User" },
-    { id: 4, profile: "images/dashboard/rifha.png", name: "Rifha Kenjeran", email: "rip@email.com", role: "User" },
-    { id: 5, profile: "images/dashboard/lena.png", name: "Lena Jakarta", email: "len@email.com", role: "User" },
-    { id: 6, profile: "images/dashboard/der.jpg", name: "Der Surabaya", email: "derz@email.com", role: "User" },
+    { id: 1, profile: "images/dashboard/jo.png", name: "Zayden Feroz", email: "zayden.feroz@email.com", role: "Admin" },
+    { id: 2, profile: "images/dashboard/vita.jpg", name: "Ava Mirai", email: "ava.mirai@email.com", role: "Editor" },
+    { id: 3, profile: "images/dashboard/vina.png", name: "Milo Renzo", email: "milo.renzo@email.com", role: "User" },
+    { id: 4, profile: "images/dashboard/rifha.png", name: "Kaiya Zane", email: "kaiya.zane@email.com", role: "User" },
+    { id: 5, profile: "images/dashboard/lena.png", name: "Ivy Raya", email: "ivy.raya@email.com", role: "User" },
+    { id: 6, profile: "images/dashboard/der.jpg", name: "Jaxon Nova", email: "jaxon.nova@email.com", role: "User" },
 ];
 
 // Function to render users in table

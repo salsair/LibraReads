@@ -1,0 +1,155 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #121921;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Top Navigation Bar */
+.navbar {
+    width: 100%;
+    background-color: #121921;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo img {
+    width: 100px;
+    height: auto;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    width: auto;
+}
+
+.navbar ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.navbar ul li a i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.navbar ul li a:hover {
+    background: #a28d4f;
+    border-radius: 5px;
+}
+
+/* Search Bar */
+.top-nav {
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* Menjadikan elemen sticky */
+    top: 70px; /* Memberikan jarak agar tidak tertutup navbar */
+    z-index: 1000; /* Pastikan sticky berada di atas konten lainnya */
+}
+
+.search-bar {
+    width: 60%;
+    max-width: 600px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-bar:focus {
+    border-color: #a28d4f;
+    box-shadow: 0 0 5px rgba(162, 141, 79, 0.5);
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: 20px 40px;
+}
+
+/* Book Sections */
+.book-section {
+    margin-bottom: 40px;
+}
+
+.book-section h2 {
+    font-size: 24px;
+    color: #121921;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #a28d4f;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.book {
+    width: 150px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+}
+
+.book img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}

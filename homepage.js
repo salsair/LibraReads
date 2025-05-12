@@ -1,20 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const sidebar = document.getElementById("sidebar");
-    const closeBtn = document.querySelector(".close-btn");
-    const overlay = document.getElementById("overlay");
+document.addEventListener("DOMContentLoaded", function () { 
+  // Variabel untuk tombol-tombol dan elemen dropdown
+  const profileBtn = document.getElementById('profileBtn');
+  const profileDropdown = document.getElementById('profileDropdown');
 
-    menuToggle.addEventListener("click", function () {
-        sidebar.classList.add("open");
-    });
+  // Fungsi untuk menampilkan/hilang dropdown profil saat tombol di profile diklik
+  profileBtn.addEventListener('click', function (event) {
+      event.preventDefault(); // Cegah perilaku default seperti redirect
+      profileDropdown.classList.toggle('active'); // Menambahkan/ menghapus kelas 'active' untuk menampilkan dropdown
+  });
 
-    closeBtn.addEventListener("click", function () {
-        sidebar.classList.remove("open");
-    });
-
-    overlay.addEventListener("click", function () {
-        sidebar.classList.remove("open");
-    });
+  // Menutup dropdown jika tombol Escape ditekan
+  document.addEventListener('keydown', function (e) {
+      if (e.key === "Escape") {
+          profileDropdown.classList.remove('active');
+      }
+  });
 });
-
-

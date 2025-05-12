@@ -117,3 +117,26 @@ body {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+/* Hidden Login Button for Admin */
+.hidden-login {
+    display: block;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0;  /* Hidden but clickable */
+    cursor: pointer;
+}
+
+.hidden-login:hover {
+    text-decoration: underline;
+    opacity: 1; /* Show on hover */
+}
