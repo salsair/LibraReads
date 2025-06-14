@@ -1,34 +1,54 @@
-// Form validation and submission
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('login-form');
-    
-    form.addEventListener('submit', function(e) {
+    const emailField = document.getElementById('email');
+    const rememberMeCheckbox = document.getElementById('remember');
+
+    // 1. Fungsi untuk mendapatkan cookie berdasarkan nama
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // 2. Periksa cookie 'remember_me' saat halaman dimuat
+    const rememberedUser = getCookie('remember_email');
+    if (rememberedUser) {
+        emailField.value = decodeURIComponent(rememberedUser); // Isi email yang tersimpan
+        rememberMeCheckbox.checked = true; // Centang kotaknya
+    }
+
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
-        
-        // Get form values
-        const email = document.getElementById('email').value.trim();
+
+        const email = emailField.value.trim();
         const password = document.getElementById('password').value;
-        const rememberMe = document.getElementById('remember').checked;
-        
-        // Basic validation
+        const rememberMe = rememberMeCheckbox.checked;
+
+        // Validasi dasar
         if (!email || !password) {
-            showMessage('Please fill in all fields', 'error');
+            showMessage('Silakan isi semua kolom', 'error');
             return;
         }
-        
-        // Email validation
+
         if (!isValidEmail(email)) {
-            showMessage('Please enter a valid email address', 'error');
+            showMessage('Masukkan alamat email yang valid', 'error');
             return;
         }
-        
-        // If validation passes, submit the form
+
+        // 3. Simpan atau hapus cookie email saat login
+        if (rememberMe) {
+            // Simpan email di cookie terpisah selama 30 hari
+            document.cookie = `remember_email=${encodeURIComponent(email)}; max-age=2592000; path=/`;
+        } else {
+            // Hapus cookie email jika tidak dicentang
+            document.cookie = 'remember_email=; max-age=-1; path=/';
+        }
+
         const formData = new FormData();
         formData.append('email', email);
         formData.append('password', password);
-        formData.append('remember', rememberMe);
-        
-        // Send the form data to the server
+        formData.append('remember', rememberMe); // Kirim status checkbox
+
         fetch('process_login.php', {
             method: 'POST',
             body: formData
@@ -36,45 +56,43 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                showMessage('Login successful! Redirecting...', 'success');
-                // Redirect to home page or dashboard after 1.5 seconds
+                showMessage('Login berhasil! Mengalihkan...', 'success');
                 setTimeout(() => {
                     window.location.href = data.redirect || 'index.html';
                 }, 1500);
             } else {
-                showMessage(data.message || 'Invalid email or password', 'error');
+                showMessage(data.message || 'Email atau password salah', 'error');
             }
         })
         .catch(error => {
-            showMessage('Connection error. Please try again later.', 'error');
+            showMessage('Kesalahan koneksi. Coba lagi nanti.', 'error');
             console.error('Error:', error);
         });
     });
-    
-    // Helper functions
+
+    // Fungsi helper
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
-    
+
     function showMessage(message, type = 'info') {
-        // Check if a message element already exists
         let messageElement = document.querySelector('.message-container');
-        
-        // If not, create one
         if (!messageElement) {
             messageElement = document.createElement('div');
-            messageElement.className = 'message-container';
+            // Menambahkan style langsung agar tidak perlu edit CSS
+            messageElement.style.padding = '10px';
+            messageElement.style.marginTop = '15px';
+            messageElement.style.marginBottom = '15px';
+            messageElement.style.borderRadius = '5px';
+            messageElement.style.textAlign = 'center';
+            messageElement.style.color = '#fff';
             form.parentNode.insertBefore(messageElement, form);
         }
-        
-        // Set the message content and class
         messageElement.textContent = message;
-        messageElement.className = `message-container ${type}`;
-        
-        // Remove the message after 5 seconds
+        messageElement.style.backgroundColor = type === 'success' ? '#28a745' : '#dc3545';
         setTimeout(() => {
             messageElement.remove();
-        }, 5000);
+        }, 3000);
     }
 });

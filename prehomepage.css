@@ -1,50 +1,84 @@
+/* Mengimpor font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+/* Reset dan Body Styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 body {
+    font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #121921;
+    overflow: hidden; /* Mencegah scrollbar muncul */
 }
 
+/* Container utama splash screen */
 .splash-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     width: 100%;
-    background-color: #121921;
+    height: 100%;
     color: #fff;
     text-align: center;
+    padding: 20px; /* Menambahkan padding untuk layar kecil */
 }
 
+/* Konten di dalam splash screen */
 .splash-content {
-    animation: fadeIn 2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Logo yang Responsif */
 .logo {
-    width: 300px;
+    /* Menggunakan persen agar ukurannya mengikuti layar, dengan batas maksimal */
+    width: 60%;
+    max-width: 280px; /* Logo tidak akan lebih besar dari 280px di layar desktop */
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem; /* Menggunakan rem untuk spasi yang skalabel */
+    
+    /* Animasi baru: fade in dan slide ke atas */
+    animation: fadeInUp 1s ease-out;
 }
 
+/* Judul yang Responsif */
 h1 {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    /* Ukuran font lebih kecil dengan spasi huruf yang bagus */
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    /* Animasi yang sama, tapi dengan sedikit delay agar muncul setelah logo */
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: forwards; /* Mempertahankan state akhir animasi */
+    opacity: 0; /* Mulai dari transparan sebelum animasi delay selesai */
 }
 
-@keyframes fadeIn {
+/* Keyframes untuk animasi "Fade In dan Slide Up" */
+@keyframes fadeInUp {
     from {
         opacity: 0;
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Query untuk layar yang lebih besar (desktop) */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 1.5rem; /* Ukuran font sedikit lebih besar di desktop */
     }
 }

@@ -1,78 +1,89 @@
 <?php
-// Start session
+// Mulai sesi
 session_start();
 
-// Initialize response array
+// Inisialisasi respons
 $response = array('success' => false, 'message' => '', 'redirect' => '');
 
-// Check if the form was submitted via POST
+// Pastikan request adalah POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Include database configuration
+    // Sertakan koneksi database
     require_once 'config.php';
-    
-    // Get form data
+
+    // Ambil data dari form
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
-    $remember = isset($_POST['remember']) ? $_POST['remember'] : false;
-    
-    // Validate input
+    // Konversi string 'true'/'false' dari JS ke boolean
+    $remember = isset($_POST['remember']) && $_POST['remember'] === 'true';
+
+    // Validasi input
     if (empty($email) || empty($password)) {
-        $response['message'] = 'Email and password are required';
+        $response['message'] = 'Email dan password harus diisi';
         echo json_encode($response);
         exit;
     }
-    
-    // Check if user exists
+
+    // Cari pengguna berdasarkan email
     $stmt = $conn->prepare("SELECT id, email, full_name, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        
-        // Verify password
+
+        // Verifikasi password
         if (password_verify($password, $user['password'])) {
-            // Password is correct, create session
+            // Buat sesi untuk pengguna
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['full_name'];
             $_SESSION['logged_in'] = true;
-            
-            // Check if the email is 'admin', then redirect to admin page
-            if ($user['full_name'] == 'admin') {
-                $response['redirect'] = 'admin.html'; // Redirect to admin page
-            } else {
-                $response['redirect'] = 'homepage.html'; // Redirect to dashboard
+
+            // Logika "Remember Me"
+            if ($remember) {
+                // Buat token yang aman secara kriptografis
+                $token = bin2hex(random_bytes(32));
+                $token_hash = hash('sha256', $token);
+                $user_id = $user['id'];
+                // Set token kedaluwarsa dalam 30 hari
+                $expires_at = date('Y-m-d H:i:s', time() + 86400 * 30);
+
+                // Simpan hash token ke database
+                $stmt_token = $conn->prepare("INSERT INTO remember_tokens (user_id, token_hash, expires_at) VALUES (?, ?, ?)");
+                $stmt_token->bind_param("iss", $user_id, $token_hash, $expires_at);
+                $stmt_token->execute();
+                $stmt_token->close();
+
+                // Set cookie di browser pengguna (user_id:token)
+                $cookie_value = base64_encode($user_id . ':' . $token);
+                setcookie('remember_me', $cookie_value, time() + (86400 * 30), "/"); // Cookie berlaku 30 hari
             }
 
-            // Set remember-me cookie if requested
-            if ($remember === 'true') {
-                $token = bin2hex(random_bytes(32)); // Generate a secure token
-                
-                // Store token in database (you would need a 'remember_tokens' table)
-                // This is a simplified example - in production, implement proper token handling
-                
-                // Set cookie to expire in 30 days
-                setcookie('remember_token', $token, time() + (86400 * 30), "/");
+            // Atur URL redirect berdasarkan peran
+            if ($user['full_name'] == 'admin') {
+                $response['redirect'] = 'admindashboard.php';
+            } else {
+                $response['redirect'] = 'homepage.php';
             }
-            
+
             $response['success'] = true;
-            $response['message'] = 'Login successful!';
+            $response['message'] = 'Login berhasil!';
+
         } else {
-            $response['message'] = 'Invalid password';
+            $response['message'] = 'Password salah';
         }
     } else {
-        $response['message'] = 'User not found';
+        $response['message'] = 'Email tidak ditemukan';
     }
-    
+
     $stmt->close();
     $conn->close();
 } else {
-    $response['message'] = 'Invalid request method';
+    $response['message'] = 'Metode request tidak valid';
 }
 
-// Return JSON response
+// Kembalikan respons dalam format JSON
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>

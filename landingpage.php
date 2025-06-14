@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraReads | Your Digital Programming Library</title>
+    <link rel="stylesheet" href="landingpage.css">
+    <script defer src="landingpage.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="images/LogoLibraReads.png" alt="LibraReads Logo">
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            <i class='bx bx-menu'></i>
+        </div>
+    
+        <nav id="nav-menu" class="nav-menu">
+            <ul>
+                <li><a href="#nav-menu">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#explore">Explore</a></li>
+                <li><a href="#mobile-app">Mobile App</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="login.php" class="btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unlock the Power of Coding</h1>
+            <p>Discover a vast collection of programming books and level up your skills.</p>
+            <div class="buttons">
+                <a href="login.php" class="btn primary">Explore Books</a>
+                <a href="homepage.php" class="btn secondary">Go to Dashboard</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/hp-librareads.png" alt="LibraReads App">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About LibraReads</h2>
+        <p>LibraReads is a digital library providing free access to thousands of programming books. Our mission is to empower developers and tech enthusiasts through knowledge.</p>
+    </section>
+
+
+    <section class="invitation" id="explore">
+        <h2>Explore, Learn, and Build</h2>
+        <p>Expand your knowledge in programming, web development, and AI. Join a community of passionate learners!</p>
+        <div class="categories">
+            <div class="category">HTML</div>
+            <div class="category">CSS</div>
+            <div class="category">JavaScript</div>
+            <div class="category">Python</div>
+            <div class="category">Java</div>
+            <div class="category">SQL</div>
+            <div class="category">C++</div>
+            <div class="category">Node.js</div>
+            <div class="category">Dart</div>
+            <div class="category">PHP</div>
+        </div>
+    </section>
+
+    <section class="mobile-app" id="mobile-app">
+        <h2>LibraReads Mobile App</h2>
+        <p>Read anywhere, anytime with our mobile app. Enjoy features like personalized recommendations, multi-platform support, and bookmarks.</p>
+        <div class="app-features">
+            <div class="app-feature">
+                <i class='bx bx-download'></i>
+                <h3>Offline Reading</h3>
+                <p>Download books and read them without an internet connection.</p>
+            </div>
+            <div class="app-feature">
+                <i class='bx bx-devices'></i>
+                <h3>Multi-Platform</h3>
+                <p>Available on Android & iOS for seamless reading across devices.</p>
+            </div>
+            <div class="app-feature">
+                <i class='bx bx-bookmark'></i>
+                <h3>Bookmark & Sync</h3>
+                <p>Save your progress and continue reading anytime.</p>
+            </div>
+        </div>
+        <div class="download-buttons">
+            <a href="#"><img src="images/play-store.png" alt="Google Play"></a>
+            <a href="#"><img src="images/app-store.png" alt="App Store"></a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: readslibra@gmail.com</p>
+        <p>Phone: +62 895 6079 70824</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 LibraReads. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
