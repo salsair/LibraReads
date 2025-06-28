@@ -66,6 +66,11 @@ body {
     font-size: 20px;
 }
 
+/* Tambahan untuk membuat ikon mata bisa diklik */
+.input-box #togglePassword {
+    cursor: pointer;
+}
+
 .wrapper .remember-forgot {
     display: flex;
     justify-content: space-between;

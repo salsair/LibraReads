@@ -1,0 +1,368 @@
+/* ========== VARIABLES ========== */
+:root {
+  --primary: #121921;
+  --secondary: #a28d4f;
+  --text: #121921;
+  --text-light: #718096;
+  --bg: #ffffff;
+  --bg-light: #f7fafc;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --radius: 15px;
+  --transition: all 0.3s ease;
+}
+
+/* ========== RESET & BASE STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* ========== TOP BAR & BACK BUTTON ========== */
+.top-bar {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 100;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.back-button i {
+    font-size: 0.9rem;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto 0; /* Adjusted margin-top for space */
+}
+
+/* ========== BOOK DETAIL CARD ========== */
+.book-detail-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+.saved-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--secondary);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: none;
+  align-items: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+.saved-indicator i {
+  margin-right: 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== BOOK HEADER ========== */
+.book-header {
+  background: var(--secondary);
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.book-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.book-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ========== BOOK CONTENT ========== */
+.book-content {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.book-cover {
+  flex: 0 0 300px;
+  height: 400px;
+  background: var(--primary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.98);
+  transition: filter 0.3s ease;
+}
+
+.book-cover img:hover {
+    filter: brightness(1.02);
+}
+
+.book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ========== BOOK META ========== */
+.book-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.meta-item {
+  background: var(--bg-light);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.meta-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.meta-item span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.meta-item p {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ========== BOOK DESCRIPTION ========== */
+.book-description {
+  background: var(--bg-light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--secondary);
+}
+
+.book-description h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.book-description p {
+  color: var(--text-light);
+  line-height: 1.7;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ========== ACTION BUTTONS ========== */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(0);
+  transform: scale(0.98) !important;
+}
+
+#startReadingBtn {
+  background: var(--secondary);
+  color: white;
+  flex: 1;
+  justify-content: center;
+}
+
+#startReadingBtn:hover {
+  background: #8a7a43;
+}
+
+/* Generic button styles for save/unsave */
+#toggleSaveBtn.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+#toggleSaveBtn.btn-primary:hover {
+    background: #0e1318;
+}
+
+#toggleSaveBtn.btn-secondary {
+    background: var(--bg-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+#toggleSaveBtn.btn-secondary:hover {
+    background: #e2e8f0;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 992px) {
+  .book-content {
+    flex-direction: column;
+  }
+  
+  .book-cover {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+      padding-top: 80px; /* Add padding to body for the back button */
+  }
+
+  .top-bar {
+      top: 15px;
+      left: 15px;
+  }
+
+  .container {
+      margin-top: 0;
+  }
+    
+  .book-header {
+    padding: 1.5rem;
+  }
+  
+  .book-content {
+    padding: 1.5rem;
+  }
+  
+  .book-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  button {
+    width: 100%;
+    justify-content: center; /* Center button content */
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 10px;
+    padding-top: 70px;
+  }
+
+  .back-button {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+  }
+  
+  .book-meta {
+    grid-template-columns: 1fr;
+  }
+  
+  .book-header {
+    padding: 1.2rem;
+  }
+  
+  .book-content {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .book-header h1 {
+    font-size: 1.3rem !important;
+  }
+  
+  button {
+    padding: 0.7rem !important;
+    font-size: 0.9rem !important;
+  }
+}

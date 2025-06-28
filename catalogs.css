@@ -1,0 +1,260 @@
+/* ========== RESET & BASE STYLES ========== */
+:root {
+  --primary: #121921;
+  --secondary: #a28d4f;
+  --text: #121921;
+  --text-light: #718096;
+  --bg: #ffffff;
+  --bg-light: #f7fafc;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ========== DASHBOARD LAYOUT ========== */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ========== TOP NAVIGATION ========== */
+.sidebar {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.sidebar .logo img {
+  width: 100px;
+  height: auto;
+  transition: var(--transition);
+}
+
+.sidebar .logo img:hover {
+  opacity: 0.9;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.nav-links li a i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background: var(--secondary);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ========== SEARCH BAR ========== */
+.top-nav {
+  background-color: var(--bg);
+  padding: 15px 20px; /* Tambah horizontal padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 70px;
+  z-index: 999;
+  width: 100%; /* Pastikan full width */
+}
+
+#search-form {
+  width: 100%; /* Form mengambil full width */
+  max-width: 800px; /* Batasi max width */
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 100%; /* Full width dalam form container */
+  min-width: 300px; /* Minimum width */
+  max-width: none; /* Remove max-width constraint */
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: var(--transition);
+}
+
+.search-bar:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(162, 141, 79, 0.2);
+}
+
+/* ========== MAIN CONTENT ========== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 20px 40px;
+}
+
+/* ========== BOOK SECTIONS ========== */
+.book-section {
+  margin-bottom: 3rem;
+}
+
+.book-section h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--secondary);
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.book {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.book:hover {
+  transform: translateY(-5px);
+}
+
+.book img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+}
+
+.book:hover img {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 992px) {
+  .book-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links li a {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .search-bar {
+    width: 80%;
+    padding: 10px 15px;
+  }
+  
+  .content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .book-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+  
+  .book img {
+    height: 180px;
+  }
+  
+  .sidebar .logo img {
+    width: 80px;
+  }
+}

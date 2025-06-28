@@ -2,14 +2,40 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('signup-form');
     
+    // ===================================================
+    // BARU: Fitur Tampilkan/Sembunyikan Password
+    // ===================================================
+    const passwordField = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+    const confirmPasswordField = document.getElementById('confirm-password');
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+
+    function togglePasswordVisibility(field, icon) {
+        if (field && icon) {
+            icon.addEventListener('click', function() {
+                const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
+                field.setAttribute('type', type);
+                // Ganti ikon mata
+                this.classList.toggle('bxs-show');
+                this.classList.toggle('bxs-hide');
+            });
+        }
+    }
+
+    togglePasswordVisibility(passwordField, togglePassword);
+    togglePasswordVisibility(confirmPasswordField, toggleConfirmPassword);
+    // ===================================================
+    // AKHIR DARI FITUR BARU
+    // ===================================================
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form values
         const email = document.getElementById('email').value.trim();
         const fullName = document.getElementById('full-name').value.trim();
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
+        const password = passwordField.value;
+        const confirmPassword = confirmPasswordField.value;
         
         // Basic validation
         if (!email || !fullName || !password || !confirmPassword) {
@@ -36,10 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // If validation passes, submit the form
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('fullName', fullName);
-        formData.append('password', password);
+        const formData = new FormData(form); // Cara lebih mudah untuk mengambil semua data form
         
         // Send the form data to the server
         fetch('process_signup.php', {
@@ -52,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Account created successfully! Redirecting to login...', 'success');
                 // Redirect to login page after 2 seconds
                 setTimeout(() => {
-                    window.location.href = 'login.html';
+                    window.location.href = 'login.php';
                 }, 2000);
             } else {
                 showMessage(data.message || 'Error creating account. Please try again.', 'error');
@@ -77,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // If not, create one
         if (!messageElement) {
             messageElement = document.createElement('div');
-            messageElement.className = 'message-container';
+            // Style-nya sekarang diatur oleh CSS
             form.parentNode.insertBefore(messageElement, form);
         }
         
@@ -87,7 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Remove the message after 5 seconds
         setTimeout(() => {
-            messageElement.remove();
-        }, 5000);
+            // Tambahkan efek fade out sebelum menghapus
+            messageElement.style.opacity = '0';
+            setTimeout(() => {
+                messageElement.remove();
+            }, 500);
+        }, 4500);
     }
 });

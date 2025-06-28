@@ -53,17 +53,39 @@ body {
     padding: 20px 45px 20px 20px;
 }
 
+/* Sembunyikan ikon mata bawaan browser */
+input::-webkit-password-reveal-button,
+input::-ms-reveal {
+    display: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 .input-box input::placeholder {
     color: #ffffff;
 }
 
+/* === PERBAIKAN DI SINI === */
+
+/* SEMBUNYIKAN SEMUA IKON DI DALAM .input-box SECARA DEFAULT */
 .input-box i {
+    display: none; 
+}
+
+/* TAMPILKAN KEMBALI HANYA IKON YANG KITA BERI ID SECARA SPESIFIK */
+.input-box i#togglePassword,
+.input-box i#toggleConfirmPassword {
+    display: block; /* Tampilkan kembali ikon kita */
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
+    cursor: pointer;
+    z-index: 2; /* Pastikan ikon kita berada di lapisan atas */
 }
+
+/* === AKHIR PERBAIKAN === */
 
 .wrapper .btn {
     width: 100%;
@@ -93,4 +115,21 @@ body {
 
 .register-link p a:hover {
     text-decoration: underline;
+}
+
+/* Styling untuk pesan notifikasi */
+.message-container {
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    transition: opacity 0.5s ease;
+}
+.message-container.success {
+    background-color: #28a745;
+}
+.message-container.error {
+    background-color: #dc3545;
 }
