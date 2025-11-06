@@ -1,6 +1,16 @@
 {
-    "require": {
-        "phpmailer/phpmailer": "^6.10",
-        "cloudinary/cloudinary_php": "^3.1"
-    }
+  "name": "salsair/librareads",
+  "description": "LibraReads web app",
+  "type": "project",
+  "require": {
+    "phpmailer/phpmailer": "^6.10",
+    "cloudinary/cloudinary_php": "^3.1",
+    "php": "^8.0"
+  },
+  "scripts": {
+    "start": "php -S 0.0.0.0:8080 -t public"
+  },
+  "config": {
+    "platform-check": false
+  }
 }
